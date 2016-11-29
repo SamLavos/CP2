@@ -29,7 +29,7 @@ public class GestaoClinica {
             str.append("Não há funcionarios inseridos!");
         } else {
             for (int i = 0; i < funcionarios.size(); i++) {
-                str.append("Funcionario: ").append(funcionarios.get(i)).append("\n");
+                str.append(funcionarios.get(i)).append("\n");
             }
         }
         return str.toString();
@@ -59,7 +59,7 @@ public class GestaoClinica {
             str.append("Não há utentes inseridos!");
         } else {
             for (int i = 0; i < utentes.size(); i++) {
-                str.append("Utente: ").append(utentes.get(i)).append("\n");
+                str.append(utentes.get(i)).append("\n");
             }
         }
         return str.toString();
@@ -128,7 +128,7 @@ public class GestaoClinica {
             str.append("Não há tipos biomedicos inseridos!");
         } else {
             for (int i = 0; i < tipoBiomedicos.size(); i++) {
-                str.append("Tipo Biomedico: ").append(tipoBiomedicos.get(i)).append("\n");
+                str.append(tipoBiomedicos.get(i)).append("\n");
             }
         }
         return str.toString();
@@ -182,7 +182,18 @@ public class GestaoClinica {
     }
 
 
-
+    public String mostrarDadosBiomedicos(int numeroUtente) {
+        StringBuilder str = new StringBuilder();
+        if (dadosBiomedicos.isEmpty()) {
+            str.append("Este utente não tem dados biomedicos inseridos!");
+        } else {
+            for (int i = 0; i < dadosBiomedicos.size(); i++) {
+                if(dadosBiomedicos.get(i).getUtente().getNumeroUtente()==(numeroUtente))
+                    str.append(dadosBiomedicos.get(i)).append("\n");
+            }
+        }
+        return str.toString();
+    }
 
     //public abstract void marcarConsulta();
     //public abstract void marcarExame();

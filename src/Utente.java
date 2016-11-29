@@ -149,6 +149,8 @@ public class Utente extends Pessoa implements Serializable {
         str.append("\n\tLogin: ").append(login);
         str.append("\n\tPassword: ").append(password);
 
+        GestaoClinica gc = new GestaoClinica();
+        str.append("\n\tDados Biomedicos: ").append(gc.mostrarDadosBiomedicos(numeroUtente));
         return str.toString();
     }
 
