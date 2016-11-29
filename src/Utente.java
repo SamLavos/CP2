@@ -15,10 +15,13 @@ public class Utente extends Pessoa implements Serializable {
     private String login;
     private String password;
 
+    public static int numUtentes;
+
 
     public Utente(int nif, String nome, Calendar dataNascimento, int numeroUtente, char sexo, String sistemaSaude, String nomeResponsavel, String parentescoResponsavel, String emailResponsavel, int telefoneResponsavel, String medicoFamilia, String login, String password) {
         super(nif, nome, dataNascimento);
         numeroProcesso++;
+        numUtentes++;
         this.numeroUtente = numeroUtente;
         this.sexo = sexo;
         this.sistemaSaude = sistemaSaude;

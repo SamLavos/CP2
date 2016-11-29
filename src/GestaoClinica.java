@@ -136,6 +136,8 @@ public class GestaoClinica {
 
 
 
+
+
     public int getTotalUtentes() {
         return utentes.size();
 

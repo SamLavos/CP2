@@ -6,6 +6,7 @@ import java.util.GregorianCalendar;
 public class Main {
 
     public static SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+    public static GestaoClinica gc = new GestaoClinica();
 
     public static void main(String[] args) {
 	// write your code here
@@ -217,10 +218,18 @@ public class Main {
 
                     break;
                 case 5:
-                    DadoBiomedico dadoBiomedico = lerDadosDadosBiomedicos(gc);
-                    gc.inserirDadoBiomedico(dadoBiomedico);
-                    System.out.println("Dado biomédico inserido com sucesso!");
+                    if (Utente.numUtentes != 0)
+                        adicionarDadoBiomedico();
+                    else {
+                        System.err.println("Não há utentes inseridos!");
+                    }
                     break;
+
+
+                    //DadoBiomedico dadoBiomedico = lerDadosDadosBiomedicos(gc);
+                   //gc.inserirDadoBiomedico(dadoBiomedico);
+                    //System.out.println("Dado biomédico inserido com sucesso!");
+                   // break;
                 case 6:
                     do {
                         opcaoSubMenu = menuEstatisticas();
@@ -424,6 +433,61 @@ public class Main {
         DadoBiomedico db1 = new DadoBiomedico(data, valor, tipoBiomedico,  utente,  funcionario);
         return db1;
 
+
+    }
+
+    public static void adicionarDadoBiomedico() {
+        int pos;
+        Calendar data =new GregorianCalendar();
+        double valor;
+        TipoBiomedico tipoBiomedico;
+        Utente utente;
+        Funcionario funcionario;
+        int numeroUtente,nif;
+        String designacao,dataD;
+
+        try{
+            valor = Consola.lerDouble("Indique o valor do dado biomédico: ",0 , 99999);
+            dataD = Consola.lerString("Indique a data (\"dd-MM-yyyy\"):");
+            data.setTime(formato.parse(dataD));
+
+            do {
+                System.out.println(gc.mostrarUtentes());
+                numeroUtente = Consola.lerInt("Indique o número do utente: ", 1, 9999999);
+                pos = gc.pesquisarUtente(numeroUtente);
+                if (pos == -1)
+                    System.out.println("Utente não existe!");
+            } while (pos == -1);
+
+            do {
+                System.out.println(gc.mostrarFuncionario());
+                nif = Consola.lerInt("Indique o nif do funcionário: ", 1, 9999999);
+                pos = gc.pesquisarFuncionario(nif);
+                if (pos == -1)
+                    System.out.println("Funcionário não existe!");
+            } while (pos == -1);
+
+            do {
+                System.out.println(gc.mostrarTipoBiomedico());
+                designacao = Consola.lerString("Indique o tipo de dado biomédico:");
+                pos = gc.pesquisarTipoBiomedico(designacao);
+                if (pos == -1)
+                    System.out.println("Não existe esse tipo de dado biomédico!");
+            } while (pos == -1);
+
+
+            utente = gc.obterUtente(pos);
+            funcionario = gc.obterFuncionario(pos);
+            tipoBiomedico = gc.obterTipoBiomedico(pos);
+
+
+            DadoBiomedico db1 = new DadoBiomedico(data, valor, tipoBiomedico,  utente,  funcionario);
+
+
+            gc.inserirDadoBiomedico(db1);
+        } catch (ParseException e) {
+            System.err.println("Erro ao introduzir a data!");
+        }
 
     }
 
