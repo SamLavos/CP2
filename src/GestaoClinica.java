@@ -9,9 +9,12 @@ public class GestaoClinica {
     private ArrayList<TipoBiomedico> tipoBiomedicos = new ArrayList<>();
     private ArrayList<TipoExame> tipoExames = new ArrayList<>();
     private ArrayList<DadoBiomedico> dadosBiomedicos = new ArrayList<>();
+    //    private ArrayList<Pessoa> pessoas = new ArrayList<>();
 
     public void inserirFuncionario(Funcionario funcionario){
+
         funcionarios.add(funcionario);
+        //pessoas.add(funcionario);
     }
 
     public int pesquisarFuncionario(int nif){
@@ -35,6 +38,10 @@ public class GestaoClinica {
         return str.toString();
     }
 
+    public  void removerFuncionario(int pos){
+        funcionarios.remove(pos);
+    }
+
     public int pesquisarUtente(int numero){
         for (int i = 0; i < utentes.size(); i++) {
             if (numero==utentes.get(i).getNumeroUtente()) {
@@ -51,6 +58,11 @@ public class GestaoClinica {
             }
         }
         return -1;
+    }
+
+    public void inserirUtente(Utente utente){
+        utentes.add(utente);
+        //pessoas.add(utente);
     }
 
     public String mostrarUtentes() {
@@ -73,15 +85,6 @@ public class GestaoClinica {
             }
         }
         return -1;
-    }
-
-    public  void removerFuncionario(int pos){
-        funcionarios.remove(pos);
-    }
-
-
-    public void inserirUtente(Utente utente){
-        utentes.add(utente);
     }
 
     public void inserirDadoBiomedico(DadoBiomedico dadoBiomedico){
@@ -213,6 +216,9 @@ public class GestaoClinica {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("CPII.dat"));
             out.writeObject(funcionarios);
             out.writeObject(utentes);
+            out.writeObject(tipoExames);
+            out.writeObject(tipoBiomedicos);
+            out.writeObject(dadosBiomedicos);
             out.close();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -224,6 +230,12 @@ public class GestaoClinica {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("CPII.dat"));
             funcionarios = (ArrayList<Funcionario>) in.readObject();
             utentes = (ArrayList<Utente>) in.readObject();
+            tipoExames = (ArrayList<TipoExame>) in.readObject();
+            tipoBiomedicos = (ArrayList<TipoBiomedico>) in.readObject();
+            dadosBiomedicos = (ArrayList<DadoBiomedico>) in.readObject();
+
+            Utente.numUtentes= utentes.size();
+
             in.close();
         } catch (IOException | ClassNotFoundException ex) {
             System.out.println(ex.getMessage());

@@ -314,7 +314,7 @@ public class Main {
         } while (pos != -1);
         nome = Consola.lerString("Indique o nome completo do utente: ");
         sexo = Consola.lerChar("Indique o sexo do utente: " ,"m,f");
-        dataN = Consola.lerString("Indique a data de nascimento do funcionário (\"dd-MM-yyyy\"):");
+        dataN = Consola.lerString("Indique a data de nascimento do utente (\"dd-MM-yyyy\"):");
         try{
             dataNascimento.setTime(formato.parse(dataN));
         } catch (ParseException e) {
@@ -376,7 +376,7 @@ public class Main {
         return te1;
     }
 
-
+/*
     private static DadoBiomedico lerDadosDadosBiomedicos(GestaoClinica gc) {
         int pos;
         Calendar data =new GregorianCalendar();
@@ -394,7 +394,7 @@ public class Main {
             numeroUtente = Consola.lerInt("Indique o número do utente: ", 1, 999999999);
             pos = gc.pesquisarUtente(numeroUtente);
             if (pos == -1)
-                System.out.println("Curso não existe!");
+                System.out.println("Utente não existe!");
         } while (pos == -1);
 
 
@@ -434,7 +434,7 @@ public class Main {
         return db1;
 
 
-    }
+    }*/
 
     public static void adicionarDadoBiomedico() {
         int pos;
@@ -451,7 +451,7 @@ public class Main {
             dataD = Consola.lerString("Indique a data (\"dd-MM-yyyy\"):");
             data.setTime(formato.parse(dataD));
 
-            do {
+           do {
                 System.out.println(gc.mostrarUtentes());
                 numeroUtente = Consola.lerInt("Indique o número do utente: ", 1, 9999999);
                 pos = gc.pesquisarUtente(numeroUtente);
