@@ -1,0 +1,31 @@
+LEGENDA: V-FEITO ,NADA ou X- FAZER , VX tá incompleto
+
+
+1 - Funcionario V
+		1 - Inserir Funcionario   V
+		2 - Consultar Funcionario V
+		3 - Eliminar Funcionario V
+		0 - Menu anterior V
+
+2 - Tipos de dados V ----NÃO TA A GRAVAR 
+		1 - Inserir tipo de dados biomedicos  V
+		2 - Consultar tipo de dados biomedicos V
+		3 - Inserir tipo de exame  V
+		4 - Consultar tipo de exame V 
+		5 - Alterar o preço do tipo de exame V 
+		0 - Menu anterior V
+3 - Utentes
+		1 - Inserir Utentes  V 
+		2 - Consultar por numero VX  , falta listar os dados biomedcs??
+		3 - Consultar por nome responsavel VX , same
+		0 - Menu anterior V
+4 - Serviços
+
+5 - Inserir dados biomédicos V
+
+6 - Estatisticas
+		1 - Medico que realiza mais serviços 
+		2 - Numero total de exames de cada tipo realizado
+		3 - Totais anuais faturados
+		0 - Menu anterior
+0 - Sair V 
