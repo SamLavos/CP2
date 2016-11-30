@@ -2,7 +2,6 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 public class DadoBiomedico implements Serializable{
-    private int numero;
     private Calendar data;
     private double valor;
 

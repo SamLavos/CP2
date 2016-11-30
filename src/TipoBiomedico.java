@@ -2,7 +2,8 @@ import java.io.Serializable;
 
 public class TipoBiomedico implements Serializable{
 
-    private int numero;
+    public static int numTiposBiomedicos;
+    public static int numero;
     private String designacao;
     private String descricao;
 
@@ -10,6 +11,7 @@ public class TipoBiomedico implements Serializable{
         numero++;
         this.designacao = designacao;
         this.descricao = descricao;
+        numTiposBiomedicos++;
     }
 
     public String getDesignacao() {

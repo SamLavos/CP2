@@ -9,12 +9,12 @@ public class GestaoClinica {
     private ArrayList<TipoBiomedico> tipoBiomedicos = new ArrayList<>();
     private ArrayList<TipoExame> tipoExames = new ArrayList<>();
     private ArrayList<DadoBiomedico> dadosBiomedicos = new ArrayList<>();
-    //    private ArrayList<Pessoa> pessoas = new ArrayList<>();
+    private ArrayList<Pessoa> pessoas = new ArrayList<>();
 
     public void inserirFuncionario(Funcionario funcionario){
 
         funcionarios.add(funcionario);
-        //pessoas.add(funcionario);
+        pessoas.add(funcionario);
     }
 
     public int pesquisarFuncionario(int nif){
@@ -62,7 +62,7 @@ public class GestaoClinica {
 
     public void inserirUtente(Utente utente){
         utentes.add(utente);
-        //pessoas.add(utente);
+        pessoas.add(utente);
     }
 
     public String mostrarUtentes() {
@@ -214,6 +214,7 @@ public class GestaoClinica {
     public void gravarFicheiro() {
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("CPII.dat"));
+            out.writeObject(pessoas);
             out.writeObject(funcionarios);
             out.writeObject(utentes);
             out.writeObject(tipoExames);
@@ -228,6 +229,7 @@ public class GestaoClinica {
     public void lerFicheiro() {
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("CPII.dat"));
+            pessoas = (ArrayList<Pessoa>) in.readObject();
             funcionarios = (ArrayList<Funcionario>) in.readObject();
             utentes = (ArrayList<Utente>) in.readObject();
             tipoExames = (ArrayList<TipoExame>) in.readObject();
@@ -235,6 +237,9 @@ public class GestaoClinica {
             dadosBiomedicos = (ArrayList<DadoBiomedico>) in.readObject();
 
             Utente.numUtentes= utentes.size();
+            Utente.numeroProcesso= utentes.size();
+            TipoBiomedico.numTiposBiomedicos= tipoBiomedicos.size();
+
 
             in.close();
         } catch (IOException | ClassNotFoundException ex) {

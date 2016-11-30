@@ -17,7 +17,6 @@ public class Main {
         double novoPreco;
 
 
-        GestaoClinica gc = new GestaoClinica();
         gc.lerFicheiro();
         do {
             opcaoMenu = menu();
@@ -28,7 +27,7 @@ public class Main {
                         opcaoSubMenu = menuFuncionarios();
                         switch (opcaoSubMenu) {
                             case 1:
-                                Funcionario funcionario = lerDadosFuncionario(gc);
+                                Funcionario funcionario = lerDadosFuncionario();
                                 gc.inserirFuncionario(funcionario);
                                 System.out.println("Funcionario inserido com sucesso!");
                                 break;
@@ -76,7 +75,7 @@ public class Main {
                         opcaoSubMenu = menuTiposDeDados();
                         switch (opcaoSubMenu) {
                             case 1:
-                                TipoBiomedico tipoBiomedico = lerDadosTipoBiomedico(gc);
+                                TipoBiomedico tipoBiomedico = lerDadosTipoBiomedico();
                                 gc.inserirTipoDadoBiomedico(tipoBiomedico);
                                 System.out.println("Tipo de dado biomédico inserido com sucesso!");
                                 break;
@@ -94,7 +93,7 @@ public class Main {
                                 }
                                 break;
                             case 3:
-                                TipoExame tipoExame = lerDadosTipoExame(gc);
+                                TipoExame tipoExame = lerDadosTipoExame();
                                 gc.inserirTipoExame(tipoExame);
                                 System.out.println("Tipo de dado exame inserido com sucesso!");
 
@@ -143,7 +142,7 @@ public class Main {
                         opcaoSubMenu = menuUtentes();
                         switch (opcaoSubMenu) {
                             case 1:
-                                Utente utente = lerDadosUtente(gc);
+                                Utente utente = lerDadosUtente();
                                 gc.inserirUtente(utente);
                                 System.out.println("Utente inserido com sucesso!");
 
@@ -226,7 +225,7 @@ public class Main {
                     break;
 
 
-                    //DadoBiomedico dadoBiomedico = lerDadosDadosBiomedicos(gc);
+                    //DadoBiomedico dadoBiomedico = lerDadosDadosBiomedicos();
                    //gc.inserirDadoBiomedico(dadoBiomedico);
                     //System.out.println("Dado biomédico inserido com sucesso!");
                    // break;
@@ -262,7 +261,7 @@ public class Main {
     }
 
 
-    private static Funcionario lerDadosFuncionario(GestaoClinica gc){
+    private static Funcionario lerDadosFuncionario(){
         int nif, pos,telefone;
         String morada,email,funcao,habilitacoes,nome,dataN;
         Calendar dataNascimento=new GregorianCalendar();
@@ -292,7 +291,7 @@ public class Main {
     }
 
 
-    private static Utente lerDadosUtente(GestaoClinica gc) {
+    private static Utente lerDadosUtente() {
         int numeroUtente,telefoneResponsavel,nif,pos;
         char sexo;
         String nome, sistemaSaude, nomeResponsavel, parentescoResponsavel, emailResponsavel, medicoFamilia, login, password,dataN;
@@ -335,7 +334,7 @@ public class Main {
     }
 
 
-    private static TipoBiomedico lerDadosTipoBiomedico(GestaoClinica gc){
+    private static TipoBiomedico lerDadosTipoBiomedico(){
          int pos;
          String designacao,descricao;
 
@@ -355,7 +354,7 @@ public class Main {
     }
 
 
-    private static TipoExame lerDadosTipoExame(GestaoClinica gc) {
+    private static TipoExame lerDadosTipoExame() {
         int pos;
         String designacao,descricao;
         double preco;
@@ -377,7 +376,7 @@ public class Main {
     }
 
 /*
-    private static DadoBiomedico lerDadosDadosBiomedicos(GestaoClinica gc) {
+    private static DadoBiomedico lerDadosDadosBiomedicos() {
         int pos;
         Calendar data =new GregorianCalendar();
         double valor;

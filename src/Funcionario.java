@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 public class Funcionario extends Pessoa implements Serializable {
 
+
     private String morada;
     private int telefone;
     private String email;
@@ -19,6 +20,7 @@ public class Funcionario extends Pessoa implements Serializable {
         this.email = email;
         this.habilitacoes = habilitacoes;
         this.funcao = funcao;
+
     }
 
     public String getMorada() {
