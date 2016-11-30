@@ -10,8 +10,6 @@ public class Utente extends Pessoa implements Serializable {
     private String sistemaSaude;
     private String nomeResponsavel;
     private String parentescoResponsavel;
-    private String emailResponsavel;
-    private int telefoneResponsavel;
     private String medicoFamilia;
     private String login;
     private String password;
@@ -19,8 +17,10 @@ public class Utente extends Pessoa implements Serializable {
 
 
 
-    public Utente(int nif, String nome, Calendar dataNascimento, int numeroUtente, char sexo, String sistemaSaude, String nomeResponsavel, String parentescoResponsavel, String emailResponsavel, int telefoneResponsavel, String medicoFamilia, String login, String password) {
-        super(nif, nome, dataNascimento);
+
+    public Utente(int nif, String nome, Calendar dataNascimento, int numeroUtente, char sexo, String sistemaSaude,
+                  String nomeResponsavel, String parentescoResponsavel,String medicoFamilia, String login, String password,int telefone, String email) {
+        super(nif, nome, dataNascimento,email,telefone);
         numeroProcesso++;
         numUtentes++;
         this.numeroUtente = numeroUtente;
@@ -28,8 +28,6 @@ public class Utente extends Pessoa implements Serializable {
         this.sistemaSaude = sistemaSaude;
         this.nomeResponsavel = nomeResponsavel;
         this.parentescoResponsavel = parentescoResponsavel;
-        this.emailResponsavel = emailResponsavel;
-        this.telefoneResponsavel = telefoneResponsavel;
         this.medicoFamilia = medicoFamilia;
         this.login = login;
         this.password = password;
@@ -83,22 +81,6 @@ public class Utente extends Pessoa implements Serializable {
         this.parentescoResponsavel = parentescoResponsavel;
     }
 
-    public String getEmailResponsavel() {
-        return emailResponsavel;
-    }
-
-    public void setEmailResponsavel(String emailResponsavel) {
-        this.emailResponsavel = emailResponsavel;
-    }
-
-    public int getTelefoneResponsavel() {
-        return telefoneResponsavel;
-    }
-
-    public void setTelefoneResponsavel(int telefoneResponsavel) {
-        this.telefoneResponsavel = telefoneResponsavel;
-    }
-
     public String getMedicoFamilia() {
         return medicoFamilia;
     }
@@ -147,8 +129,6 @@ public class Utente extends Pessoa implements Serializable {
         str.append("\n\tSistema de Saúde: ").append(sistemaSaude);
         str.append("\n\tNome do Responsavel: ").append(nomeResponsavel);
         str.append("\n\tParentesco do Responsavel: ").append(parentescoResponsavel);
-        str.append("\n\tEmail do Responsavel: ").append(emailResponsavel);
-        str.append("\n\tTelefone do Responsavel: ").append(telefoneResponsavel);
         str.append("\n\tMedico de Familia: ").append(medicoFamilia);
         str.append("\n\tLogin: ").append(login);
         str.append("\n\tPassword: ").append(password);

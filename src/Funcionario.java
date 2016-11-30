@@ -6,18 +6,14 @@ public class Funcionario extends Pessoa implements Serializable {
 
 
     private String morada;
-    private int telefone;
-    private String email;
     private String habilitacoes;
     private String funcao;
 
 
 
     public Funcionario(int nif, String nome, Calendar dataNascimento, String morada, int telefone, String email, String habilitacoes, String funcao) {
-        super(nif, nome, dataNascimento);
+        super(nif, nome, dataNascimento,email,telefone);
         this.morada = morada;
-        this.telefone = telefone;
-        this.email = email;
         this.habilitacoes = habilitacoes;
         this.funcao = funcao;
 
@@ -29,22 +25,6 @@ public class Funcionario extends Pessoa implements Serializable {
 
     public void setMorada(String morada) {
         this.morada = morada;
-    }
-
-    public int getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(int telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getHabilitacoes() {
@@ -68,8 +48,6 @@ public class Funcionario extends Pessoa implements Serializable {
         str.append("Funcionario :");
         str.append(super.toString());
         str.append("\n\tMorada: ").append(morada);
-        str.append("\n\tTelefone: ").append(telefone);
-        str.append("\n\tEmail: ").append(email);
         str.append("\n\tHabilitacoes: ").append(habilitacoes);
         str.append("\n\tFuncao: ").append(funcao);
 

@@ -7,11 +7,15 @@ public abstract class Pessoa implements Serializable {
     private int nif;
     private String nome;
     private Calendar dataNascimento;
+    private String email;
+    private int telefone;
 
-    public Pessoa(int nif, String nome, Calendar dataNascimento) {
+    public Pessoa(int nif, String nome, Calendar dataNascimento, String email, int telefone) {
         this.nif = nif;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
+        this.email = email;
+        this.telefone = telefone;
     }
 
     public int getNif() {
@@ -38,6 +42,21 @@ public abstract class Pessoa implements Serializable {
         this.dataNascimento = dataNascimento;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(int telefone) {
+        this.telefone = telefone;
+    }
 
     public int calcularIdade() {
         int anos;
@@ -61,6 +80,8 @@ public abstract class Pessoa implements Serializable {
                 append(dataNascimento.get(Calendar.DATE)).
                 append("-").append((dataNascimento.get(Calendar.MONTH) + 1)).
                 append("-").append(dataNascimento.get(Calendar.YEAR));
+        str.append("\n\tEmail: ").append(email);
+        str.append("\n\tTelefone : ").append(telefone);
 
         return str.toString();
     }
