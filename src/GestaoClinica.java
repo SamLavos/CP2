@@ -61,6 +61,7 @@ public class GestaoClinica {
     }
 
     public void inserirUtente(Utente utente){
+
         utentes.add(utente);
         pessoas.add(utente);
     }
@@ -237,7 +238,6 @@ public class GestaoClinica {
             dadosBiomedicos = (ArrayList<DadoBiomedico>) in.readObject();
 
             Utente.numUtentes= utentes.size();
-            Utente.numeroProcesso= utentes.size();
             TipoBiomedico.numTiposBiomedicos= tipoBiomedicos.size();
 
 
