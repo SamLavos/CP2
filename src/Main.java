@@ -292,9 +292,9 @@ public class Main {
 
 
     private static Utente lerDadosUtente() {
-        int numeroUtente,telefoneResponsavel,nif,pos;
+        int numeroUtente,telefone,nif,pos;
         char sexo;
-        String nome, sistemaSaude, nomeResponsavel, parentescoResponsavel, emailResponsavel, medicoFamilia, login, password,dataN;
+        String nome, sistemaSaude, nomeResponsavel, parentescoResponsavel, email, medicoFamilia, login, password,dataN;
         Calendar dataNascimento=new GregorianCalendar();
 
         do {
@@ -323,13 +323,13 @@ public class Main {
         sistemaSaude = Consola.lerString("Indique o sistema de saude do utente: ");
         nomeResponsavel = Consola.lerString("Indique o nome do responsavel do utente: ");
         parentescoResponsavel = Consola.lerString("Indique o parentesco do responsavel do utente: ");
-        emailResponsavel = Consola.lerString("Indique o email do responsavel do utente: ");
-        telefoneResponsavel = Consola.lerInt("Indique o telefone do responsavel pelo utente: ");
+        email = Consola.lerString("Indique o email do responsavel do utente: ");
+        telefone = Consola.lerInt("Indique o telefone do responsavel pelo utente: ");
         medicoFamilia = Consola.lerString("Indique o nome do medico de familia do utente: ");
         login = Consola.lerString("Indique o login do utente: ");
         password = Consola.lerString("Indique a password do utente: ");
 
-        Utente u1 = new Utente(nif,nome,dataNascimento,numeroUtente,sexo,sistemaSaude,nomeResponsavel,parentescoResponsavel,emailResponsavel,telefoneResponsavel,medicoFamilia,login,password);
+        Utente u1 = new Utente(nif,nome,dataNascimento,numeroUtente,sexo,sistemaSaude,nomeResponsavel,parentescoResponsavel,medicoFamilia,login,password,email,telefone);
         return u1;
     }
 

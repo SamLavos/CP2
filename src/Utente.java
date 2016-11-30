@@ -3,7 +3,7 @@ import java.util.Calendar;
 
 public class Utente extends Pessoa implements Serializable {
 
-    public static int numeroProcesso;
+    private int numeroProcesso;
     public static int numUtentes;
     private int numeroUtente;
     private char sexo;
@@ -19,9 +19,9 @@ public class Utente extends Pessoa implements Serializable {
 
 
     public Utente(int nif, String nome, Calendar dataNascimento, int numeroUtente, char sexo, String sistemaSaude,
-                  String nomeResponsavel, String parentescoResponsavel,String medicoFamilia, String login, String password,int telefone, String email) {
+                  String nomeResponsavel, String parentescoResponsavel,String medicoFamilia, String login, String password, String email,int telefone) {
         super(nif, nome, dataNascimento,email,telefone);
-        numeroProcesso++;
+        numeroProcesso=numUtentes+1; // ???????
         numUtentes++;
         this.numeroUtente = numeroUtente;
         this.sexo = sexo;

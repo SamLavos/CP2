@@ -8,7 +8,7 @@ public class TipoBiomedico implements Serializable{
     private String descricao;
 
     public TipoBiomedico(String designacao, String descricao) {
-        numero++;
+        this.numero++;
         this.designacao = designacao;
         this.descricao = descricao;
         numTiposBiomedicos++;
