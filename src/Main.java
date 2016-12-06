@@ -217,9 +217,11 @@ public class Main {
 
                     break;
                 case 5:
-                    if (Utente.numUtentes != 0)
+                    if (Utente.numUtentes != 0) {
                         adicionarDadoBiomedico();
-                    else {
+                        System.err.println("Dado biomedico criado com sucesso!");
+
+                    }else {
                         System.err.println("Não há utentes inseridos!");
                     }
                     break;
@@ -445,6 +447,7 @@ public class Main {
         int numeroUtente,nif;
         String designacao,dataD;
 
+
         try{
             valor = Consola.lerDouble("Indique o valor do dado biomédico: ",0 , 99999);
             dataD = Consola.lerString("Indique a data (\"dd-MM-yyyy\"):");
@@ -479,11 +482,12 @@ public class Main {
             funcionario = gc.obterFuncionario(pos);
             tipoBiomedico = gc.obterTipoBiomedico(pos);
 
-
             DadoBiomedico db1 = new DadoBiomedico(data, valor, tipoBiomedico,  utente,  funcionario);
 
+            utente.adicionarDadoBiomedico(0,db1);
 
             gc.inserirDadoBiomedico(db1);
+
         } catch (ParseException e) {
             System.err.println("Erro ao introduzir a data!");
         }

@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Utente extends Pessoa implements Serializable {
@@ -14,7 +15,8 @@ public class Utente extends Pessoa implements Serializable {
     private String login;
     private String password;
 
-
+    private ArrayList<DadoBiomedico> dadosBiomedicos = new ArrayList<>();
+    private DadoBiomedico dadoBiomedico;
 
 
 
@@ -31,6 +33,7 @@ public class Utente extends Pessoa implements Serializable {
         this.medicoFamilia = medicoFamilia;
         this.login = login;
         this.password = password;
+        dadosBiomedicos.add(dadoBiomedico);
     }
 
     public int getNumeroProcesso() {
@@ -114,6 +117,10 @@ public class Utente extends Pessoa implements Serializable {
     }
 
 
+    public void adicionarDadoBiomedico (int pos, DadoBiomedico dadoBiomedico)
+    {
+        dadosBiomedicos.set(pos, dadoBiomedico);
+    }
 
 
 
