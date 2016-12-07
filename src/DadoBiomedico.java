@@ -1,18 +1,18 @@
 import java.io.Serializable;
 import java.util.Calendar;
 
-public class DadoBiomedico implements Serializable{
+public class DadoBiomedico implements Serializable {
     public static int numero;
     private Calendar data;
     private double valor;
 
-    private TipoBiomedico tipoBiomedico ;
-    private Utente utente ;
-    private Funcionario funcionario ;
+    private TipoBiomedico tipoBiomedico;
+    private Utente utente;
+    private Funcionario funcionario;
 
-    public DadoBiomedico(Calendar data, double valor, TipoBiomedico tipoBiomedico, Utente utente, Funcionario funcionario) {
+    public DadoBiomedico(double valor, TipoBiomedico tipoBiomedico, Utente utente, Funcionario funcionario) {
         numero++;
-        this.data = data;
+        this.data = Calendar.getInstance();
         this.valor = valor;
         this.tipoBiomedico = tipoBiomedico;
         this.utente = utente;
@@ -69,14 +69,17 @@ public class DadoBiomedico implements Serializable{
 
     @Override
     public String toString() {
-        return "DadoBiomedico{" +
-                "numero=" + numero +
-                ", data=" + data +
-                ", valor=" + valor +
-                ", tipoBiomedico=" + tipoBiomedico +
-                ", utente=" + utente +
-                ", funcionario=" + funcionario +
-                '}';
+        StringBuilder str = new StringBuilder();
+        str.append("Dados biomédicos :");
+        str.append(tipoBiomedico.getDesignacao()).append(" - ");
+        str.append("Valor: ").append(valor).append(" - ");
+        str.append("Data: ").append(data.get(Calendar.DATE)).append("/");
+        str.append((data.get(Calendar.MONTH) + 1)).append("/");
+        str.append(data.get(Calendar.YEAR)).append(" - ");
+        str.append("Funcionario: ").append(funcionario.getNome());
+
+        return str.toString();
+
     }
 }
 

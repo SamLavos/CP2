@@ -16,7 +16,7 @@ public class Utente extends Pessoa implements Serializable {
     private String password;
 
     private ArrayList<DadoBiomedico> dadosBiomedicos = new ArrayList<>();
-    private DadoBiomedico dadoBiomedico;
+
 
 
 
@@ -33,7 +33,6 @@ public class Utente extends Pessoa implements Serializable {
         this.medicoFamilia = medicoFamilia;
         this.login = login;
         this.password = password;
-        dadosBiomedicos.add(dadoBiomedico);
     }
 
     public int getNumeroProcesso() {
@@ -117,12 +116,22 @@ public class Utente extends Pessoa implements Serializable {
     }
 
 
-    public void adicionarDadoBiomedico (int pos, DadoBiomedico dadoBiomedico)
+    public void adicionarDadoBiomedico ( DadoBiomedico dadoBiomedico)
     {
-        dadosBiomedicos.set(pos, dadoBiomedico);
+        dadosBiomedicos.add(dadoBiomedico);
     }
 
-
+   public String mostrarDadosBiomedicos() {
+        StringBuilder str = new StringBuilder();
+        if (dadosBiomedicos.isEmpty()) {
+            str.append("Este utente não tem dados biomedicos inseridos!");
+        } else {
+            for (int i = 0; i < dadosBiomedicos.size(); i++) {
+                    str.append(dadosBiomedicos.get(i)).append("\n");
+            }
+        }
+        return str.toString();
+    }
 
 
     @Override
@@ -140,8 +149,7 @@ public class Utente extends Pessoa implements Serializable {
         str.append("\n\tLogin: ").append(login);
         str.append("\n\tPassword: ").append(password);
 
-        GestaoClinica gc = new GestaoClinica();
-        str.append("\n\tDados Biomedicos: ").append(gc.mostrarDadosBiomedicos(numeroUtente));
+        str.append("\n\t").append(mostrarDadosBiomedicos());
         return str.toString();
     }
 

@@ -448,10 +448,8 @@ public class Main {
         String designacao,dataD;
 
 
-        try{
+
             valor = Consola.lerDouble("Indique o valor do dado biomédico: ",0 , 99999);
-            dataD = Consola.lerString("Indique a data (\"dd-MM-yyyy\"):");
-            data.setTime(formato.parse(dataD));
 
            do {
                 System.out.println(gc.mostrarUtentes());
@@ -460,15 +458,15 @@ public class Main {
                 if (pos == -1)
                     System.out.println("Utente não existe!");
             } while (pos == -1);
+            utente = gc.obterUtente(pos);
 
-            do {
                 System.out.println(gc.mostrarFuncionario());
                 nif = Consola.lerInt("Indique o nif do funcionário: ", 1, 9999999);
                 pos = gc.pesquisarFuncionario(nif);
                 if (pos == -1)
                     System.out.println("Funcionário não existe!");
-            } while (pos == -1);
 
+            funcionario = gc.obterFuncionario(pos);
             do {
                 System.out.println(gc.mostrarTipoBiomedico());
                 designacao = Consola.lerString("Indique o tipo de dado biomédico:");
@@ -478,20 +476,11 @@ public class Main {
             } while (pos == -1);
 
 
-            utente = gc.obterUtente(pos);
-            funcionario = gc.obterFuncionario(pos);
             tipoBiomedico = gc.obterTipoBiomedico(pos);
 
-            DadoBiomedico db1 = new DadoBiomedico(data, valor, tipoBiomedico,  utente,  funcionario);
+            DadoBiomedico db1 = new DadoBiomedico(valor, tipoBiomedico,  utente,  funcionario);
 
-            utente.adicionarDadoBiomedico(0,db1);
-
-            gc.inserirDadoBiomedico(db1);
-
-        } catch (ParseException e) {
-            System.err.println("Erro ao introduzir a data!");
-        }
-
+            utente.adicionarDadoBiomedico(db1);
     }
 
 

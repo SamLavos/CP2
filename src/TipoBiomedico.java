@@ -32,10 +32,10 @@ public class TipoBiomedico implements Serializable{
 
     @Override
     public String toString() {
-        return "TipoBiomedico{" +
-                "numero=" + numero +
-                ", designacao='" + designacao + '\'' +
-                ", descricao='" + descricao + '\'' +
-                '}';
+        StringBuilder str= new StringBuilder();
+        str.append("\n\tDesignação ").append(designacao);
+        str.append("\n\tDescrição ").append(descricao);
+
+        return str.toString();
     }
 }

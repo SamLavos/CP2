@@ -8,7 +8,7 @@ public class GestaoClinica {
     private ArrayList<Utente> utentes = new ArrayList<>();
     private ArrayList<TipoBiomedico> tipoBiomedicos = new ArrayList<>();
     private ArrayList<TipoExame> tipoExames = new ArrayList<>();
-    private ArrayList<DadoBiomedico> dadosBiomedicos = new ArrayList<>();
+    //private ArrayList<DadoBiomedico> dadosBiomedicos = new ArrayList<>();
     private ArrayList<Pessoa> pessoas = new ArrayList<>();
 
     public void inserirFuncionario(Funcionario funcionario){
@@ -32,7 +32,7 @@ public class GestaoClinica {
             str.append("Não há funcionarios inseridos!");
         } else {
             for (int i = 0; i < funcionarios.size(); i++) {
-                str.append(funcionarios.get(i)).append("\n");
+                str.append(funcionarios.get(i).getNif()).append(" - ").append(funcionarios.get(i).getNome()).append("\n");
             }
         }
         return str.toString();
@@ -72,7 +72,7 @@ public class GestaoClinica {
             str.append("Não há utentes inseridos!");
         } else {
             for (int i = 0; i < utentes.size(); i++) {
-                str.append(utentes.get(i)).append("\n");
+                str.append(utentes.get(i).getNome()).append(" - ").append(utentes.get(i).getNumeroUtente()).append("\n");
             }
         }
         return str.toString();
@@ -88,10 +88,10 @@ public class GestaoClinica {
         return -1;
     }
 
-    public void inserirDadoBiomedico(DadoBiomedico dadoBiomedico){
+   /* public void inserirDadoBiomedico(DadoBiomedico dadoBiomedico){
 
         dadosBiomedicos.add(dadoBiomedico);
-    }
+    }*/
 
 
 
@@ -132,7 +132,7 @@ public class GestaoClinica {
             str.append("Não há tipos biomedicos inseridos!");
         } else {
             for (int i = 0; i < tipoBiomedicos.size(); i++) {
-                str.append(tipoBiomedicos.get(i)).append("\n");
+                str.append(tipoBiomedicos.get(i).getDesignacao()).append(" - ").append(tipoBiomedicos.get(i).getDescricao()).append("\n");
             }
         }
         return str.toString();
@@ -188,7 +188,7 @@ public class GestaoClinica {
     }
 
 
-    public String mostrarDadosBiomedicos(int numeroUtente) {
+   /* public String mostrarDadosBiomedicos(int numeroUtente) {
         StringBuilder str = new StringBuilder();
         if (dadosBiomedicos.isEmpty()) {
             str.append("Este utente não tem dados biomedicos inseridos!");
@@ -199,7 +199,7 @@ public class GestaoClinica {
             }
         }
         return str.toString();
-    }
+    }*/
 
     //public abstract void marcarConsulta();
     //public abstract void marcarExame();
@@ -220,7 +220,7 @@ public class GestaoClinica {
             out.writeObject(utentes);
             out.writeObject(tipoExames);
             out.writeObject(tipoBiomedicos);
-            out.writeObject(dadosBiomedicos);
+            //out.writeObject(dadosBiomedicos);
             out.close();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -235,7 +235,7 @@ public class GestaoClinica {
             utentes = (ArrayList<Utente>) in.readObject();
             tipoExames = (ArrayList<TipoExame>) in.readObject();
             tipoBiomedicos = (ArrayList<TipoBiomedico>) in.readObject();
-            dadosBiomedicos = (ArrayList<DadoBiomedico>) in.readObject();
+            //dadosBiomedicos = (ArrayList<DadoBiomedico>) in.readObject();
 
             Utente.numUtentes= utentes.size();
             TipoBiomedico.numTiposBiomedicos= tipoBiomedicos.size();
